@@ -82,9 +82,10 @@ namespace boost{ namespace accumulators {
         };
 
         template<typename Args>
-            drop_visitor<Args> make_add_ref_visitor(Args const& args){
-                return drop_visitor<Args>(args);
-            }
+        drop_visitor<Args> make_add_ref_visitor(Args const& args){
+        
+            return drop_visitor<Args>(args);
+        }
     }
 
 
@@ -105,6 +106,7 @@ namespace boost{ namespace accumulators {
         
         template<typename Args>
         void operator ()(Args const& args){
+            
             if(!this->is_dropped()){
                 this->Accumulator::operator ()(args);
             }
@@ -114,12 +116,14 @@ namespace boost{ namespace accumulators {
         void drop(Args const& args){
             BOOST_ASSERT(0 < this->ref_count_);
             if(1 == this->ref_count_){
+            
                 static_cast<droppable_accumulator<Accumulator>* >(this)->on_drop(args);
             }
             --this->ref_count_;
         }
 
         bool is_dropped() const{
+           
             return 0 == this->ref_count_;
         }
     
@@ -168,6 +172,7 @@ namespace boost{ namespace accumulators {
             // members get cleaned up, including is_dropped, so the following
             // call to has_result() is valid.
             if(this->has_result()){
+            
                 this->get().~result_type();
             }
         }
