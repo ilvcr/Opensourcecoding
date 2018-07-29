@@ -73,7 +73,7 @@ namespace boost{
             template<typename Feature, typename Tag>
             struct external<Feature, Tag, void> : depends_on<>{
 
-                typedef accumulators::imp::external_impl<
+                typedef accumulators::imp::external_impl<                                  \
                     detail::to_accumulator<Feature, mpl::_1, mol::_2>, Tag> impl;
             };
         }

@@ -77,7 +77,7 @@ namespace boost{
 
                         acc.drop(this->args_);
                         // Also drop accumulators that this feature depends on
-                        this->args_[accumulator].template
+                        this->args_[accumulator].template                                    \
                             visit_if<detail::contains_feature_of_<dependencies> >( *this );
                     }
                 }
@@ -107,7 +107,7 @@ namespace boost{
             droppable_accumulator_base(Args const& args) : Accumulator(args), ref_count_(0){
             }
 
-            droppable_accumulator_base(droppable_accumulator_base const& that)
+            droppable_accumulator_base(droppable_accumulator_base const& that)                         \
                 : Accumulator(*static_cast<Accumulator const*>(&that)), ref_count_(that.ref_count_){
             }
             
@@ -151,7 +151,7 @@ namespace boost{
             droppable_accumulator(Args const& args) : droppable_accumulator::base(args){
             }
 
-            droppable_accumulator(droppable_accumulator const& that)
+            droppable_accumulator(droppable_accumulator const& that)                                               \
                 : droppable_accumulator::base(*static_cast<typename droppable_accumulator::base const *>(&that)){
             }
         };
@@ -245,16 +245,15 @@ namespace boost{
                 typedef typename as_feature<Feature>::type feature_type;
                 typedef typename feature_type::dependencies tmp_dependencies_;
 
-                typedef typename mpl::transform<typename feature_type::dependencies, 
+                typedef typename mpl::transform<typename feature_type::dependencies,                     \
                         as_droppable<mol::_1> >::type dependencies;
 
                 struct impl{
                     template<typename Sample, typename Weight>
                     struct apply{
             
-                        typedef droppable_accumulator<
-                            typename mpl::apply2<typename feature_type::impl, Sample, Weight>::type>
-
+                        typedef droppable_accumulator<                                                   \
+                            typename mpl::apply2<typename feature_type::impl, Sample, Weight>::type>     \
                         type;
                     };
                 };
