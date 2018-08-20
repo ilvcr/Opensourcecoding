@@ -1,0 +1,31 @@
+/*************************************************************************
+> File Name: aligned_allocator_adaptor_forward.hpp
+> Author: yoghourt->ilvcr 
+> Mail: liyaoliu@foxmail.com  @@  ilvcr@outlook.com 
+> Created Time: 2018年08月20日 星期一 16时32分15秒
+> Description: 
+    Copyright 2014 Glen Joseph Fernandes
+    (glenjofe@gmail.com)
+
+    Distributed under the Boost Software License, Version 1.0.
+    (http://www.boost.org/LICENSE_1_0.txt)
+ ************************************************************************/
+
+#ifndef BOOST_ALIGN_ALIGNED_ALLOCATOR_ADAPTOR_FORWARD_HPP
+#define BOOST_ALIGN_ALIGNED_ALLOCATOR_ADAPTOR_FORWARD_HPP
+
+#include <cstddef>
+
+namespace boost{
+    namespace alignment{
+
+        template<class Allocator, std::size_t Alignment = 1>
+        class aligned_allocator_adaptor;
+
+    }    /* alignment */
+}        /* boost */
+
+#endif
+
+
+
